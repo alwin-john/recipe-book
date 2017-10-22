@@ -14,5 +14,4 @@ export class HomePage {
       console.log(res);
     });
   }
-
 }

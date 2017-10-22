@@ -4,7 +4,6 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 
 import { AngularFireDatabase } from 'angularfire2/database';
-import { FirebaseApp } from 'angularfire2';
 
 @Injectable()
 export class FirebaseServiceProvider {
