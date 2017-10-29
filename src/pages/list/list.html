@@ -11,22 +11,19 @@
   <!-- grid -->
 
   <ion-content padding>
-    <ion-grid text-center>
-      <ion-row wrap>
-        <ion-col col-6 *ngFor="let item of items">
-          <!-- cards -->
-          <ion-card>
-            <img src="assets/img/saopolo.jpg">
-            <ion-card-content>
-              <h4>name of the receipe</h4>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <ion-list [virtualScroll]="items" >
+      <ion-item *virtualItem="let item" (click)="itemTapped(item.name)">
+        <ion-thumbnail item-start>
+          <ion-img src="assets/img/saopolo.jpg"></ion-img>
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+        <h4><ion-icon icon-left clear small  name="time"></ion-icon>  Time</h4>
+        <p>#kids #nonveg</p>
+      </ion-item>
+    </ion-list>
   </ion-content>
 
-  <!-- grrid end -->
+  <!-- grrid end
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon [name]="item.icon" item-start></ion-icon>
@@ -39,5 +36,5 @@
   <div *ngIf="selectedItem" padding>
     You navigated here from
     <b>{{selectedItem.title}}</b>
-  </div>
+  </div> -->
 </ion-content>
