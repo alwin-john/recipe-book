@@ -14,3 +14,27 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.col-white{
+    color: rgb(255, 255, 255);
+}
+
+.card-100{
+    width: 105%;
+    margin-left: -10px;
+}
+
+*{
+    font-family:robo;
+}
+
+::-webkit-scrollbar{
+    display:none;
+}
+
+ion-content{
+    margin-left: 0px;
+}
+
+  
+  

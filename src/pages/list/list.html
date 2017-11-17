@@ -9,8 +9,6 @@
 
 <ion-content>
   <!-- grid -->
-
-  <ion-content padding>
     <ion-list [virtualScroll]="items" >
       <ion-item *virtualItem="let item" (click)="itemTapped(item.name)">
         <ion-thumbnail item-start>
@@ -21,8 +19,6 @@
         <p>#kids #nonveg</p>
       </ion-item>
     </ion-list>
-  </ion-content>
-
   <!-- grrid end
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
