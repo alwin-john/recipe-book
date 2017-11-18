@@ -11,6 +11,7 @@ import { DetailPage } from '../pages/detail/detail';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FirebaseServiceProvider } from '../providers/firebase-service/firebase-service';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -50,7 +51,8 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    FirebaseServiceProvider
+    FirebaseServiceProvider,
+    AdMobFree
   ]
 })
 export class AppModule {}

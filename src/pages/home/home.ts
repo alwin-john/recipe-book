@@ -18,6 +18,10 @@ export class HomePage {
     });
   }
 
+  ionViewDidLoad(){
+    this.fireBaseService.showAdBanner();
+  }
+
   public itemTapped(name: string) {
 
     if (name != null || name != '') {
