@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { Platform } from 'ionic-angular';
+
 import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
 import { ListPage } from '../list/list';
 
@@ -12,10 +14,18 @@ export class HomePage {
 
   category: any[];
 
-  constructor(public navCtrl: NavController, private fireBaseService: FirebaseServiceProvider) {
-    fireBaseService.getResource('category').subscribe(res => {
-      this.category = res;
-    });
+  constructor(public navCtrl: NavController, private fireBaseService: FirebaseServiceProvider,private platform:Platform) {
+    // fireBaseService.getResource('category').subscribe(res => {
+    //   this.category = res;
+    //   console.log(res);
+    // });
+    if (this.platform.is('cordova')) {
+      fireBaseService.getRecipe('veg').then(res=>{
+        console.log(res);
+      });
+    } else {
+
+    }
   }
 
   ionViewDidLoad(){
