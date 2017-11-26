@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Headers, Http, Request, RequestMethod, RequestOptions, Response, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
-
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
