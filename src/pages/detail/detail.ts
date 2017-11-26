@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { Platform } from 'ionic-angular';
 import { FirebaseServiceProvider } from '../../providers/firebase-service/firebase-service';
+import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser';
 @Component({
   selector: 'page-detail',
   templateUrl: 'detail.html',
@@ -9,24 +10,28 @@ import { FirebaseServiceProvider } from '../../providers/firebase-service/fireba
 export class DetailPage {
 
   selectedItem: any;
-  items: Array<any>;
+  items: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fireBaseService: FirebaseServiceProvider ) {
-    
-    this.items = [];
-    
-        // If we navigated to this page, we will have an item available as a nav param
-    
-        this.selectedItem = navParams.get('param1');
-        fireBaseService.getResource(this.selectedItem).subscribe(res => {
-          this.items = res;
-          console.log(this.items);
-        });
-    
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fireBaseService: FirebaseServiceProvider, private platform: Platform,private inAppBrowser:InAppBrowser) {
+
+    this.items = '';
+
+    this.selectedItem = navParams.get('param1');
+    fireBaseService.getRecipies(this.selectedItem, 'rId').subscribe(res => {
+      this.items = res.recipe;
+      console.log(this.items);
+    });
+
   }
 
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad DetailPage');
-  // }
+  launch(url) {
+    this.platform.ready().then(() => {
+
+      const options:InAppBrowserOptions={
+        zoom:'no'
+      }
+      const browser = this.inAppBrowser.create(url,'_self');
+    });
+  }
 
 }

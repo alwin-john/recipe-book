@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -10,13 +10,13 @@
 <ion-content>
   <!-- grid -->
     <ion-list [virtualScroll]="items" >
-      <ion-item *virtualItem="let item" (click)="itemTapped(item.name)">
+      <ion-item *virtualItem="let item" (click)="itemTapped(item.recipe_id)">
         <ion-thumbnail item-start>
-          <ion-img src="assets/img/saopolo.jpg"></ion-img>
+          <ion-img src="{{item.image_url}}"></ion-img>
         </ion-thumbnail>
-        <h2>{{item.name}}</h2>
-        <h4><ion-icon icon-left clear small  name="time"></ion-icon>  Time</h4>
-        <p>#kids #nonveg</p>
+        <h2><b>{{item.title}}</b></h2>
+        <h4><ion-icon icon-left clear small  name="md-star-outline"></ion-icon>Rating- {{item.social_rank|number:'1.1-2'}}</h4>
+        <!-- <p>#kids #nonveg</p> -->
       </ion-item>
     </ion-list>
   <!-- grrid end

@@ -6,26 +6,26 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Details Page</ion-title>
+  <ion-navbar color="primary">
+    <ion-title *ngIf="items">{{items.title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content *ngIf="items">
+  <div class="about-header">
+    <img src="{{items.image_url}}" alt="ionic logo">
+  </div>
+  <div padding class="about-info">
+    <h4><b>Ingredients</b></h4>
 
-  <ion-card>
-    <img src="assets/img/saopolo.jpg" />
-    <ion-card-content>
-      <ion-card-title>
-        Name of the dish
-      </ion-card-title>
-      <h2>Ingredeients</h2>
-      <p>
-        The most popular industrial group ever<br/>and largely responsible for bringing the music to a mass audience.
-      </p>
-    </ion-card-content>
-  </ion-card>
+    <ion-list no-lines>
+      <ion-item *ngFor="let ingredient of items.ingredients">
+       {{ingredient}}
+      </ion-item>
+    </ion-list>
+    <button ion-button color="primary" full (click)="launch(items.source_url)">GET FULL RECIPE</button>
+  </div>
 
 </ion-content>

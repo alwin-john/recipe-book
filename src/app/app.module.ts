@@ -16,6 +16,8 @@ import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyBwwDK447bZ1cU6w_FMp76BUW3ozYcnD7Y",
   authDomain: "recipe-book-13c87.firebaseapp.com",
@@ -52,7 +54,8 @@ export const firebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseServiceProvider,
-    AdMobFree
+    AdMobFree,
+    InAppBrowser
   ]
 })
 export class AppModule {}
