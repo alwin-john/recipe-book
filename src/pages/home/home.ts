@@ -15,17 +15,10 @@ export class HomePage {
   category: any[];
 
   constructor(public navCtrl: NavController, private fireBaseService: FirebaseServiceProvider,private platform:Platform) {
-    // fireBaseService.getResource('category').subscribe(res => {
-    //   this.category = res;
-    //   console.log(res);
-    // });
-    if (this.platform.is('cordova')) {
-      fireBaseService.getRecipe('veg').then(res=>{
-        console.log(res);
-      });
-    } else {
-
-    }
+    fireBaseService.getResource('category').subscribe(res => {
+      this.category = res;
+      console.log(res);
+    });
   }
 
   ionViewDidLoad(){
