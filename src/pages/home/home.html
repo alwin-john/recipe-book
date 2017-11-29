@@ -1,15 +1,40 @@
 <ion-header>
   <ion-navbar color="primary">
-    <button ion-button menuToggle>
+    <button ion-button menuToggle *ngIf="toggleOn">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-searchbar *ngIf="!toggleOn" [cancelButtonText]="cancelButtonText" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)"
+      (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+    <ion-buttons *ngIf="toggleOn" end>
+      <button ion-button icon-only (click)='onDismiss()'>
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
+<ion-content *ngIf="toggleOn">
+  <ion-content class="card-background-page" padding *ngIf="category">
+    <ion-card class="card-100" *ngFor="let item of category" (click)="itemTapped(item.name)">
+      <img src={{item.imgurl}}/>
+      <div class="card-title">
+        <span class="col-white  text-center">{{item.name}}</span>
+      </div>
+    </ion-card>
+  </ion-content>
+</ion-content>
 
-<ion-content class="card-background-page" padding  *ngIf="category">
-  <ion-card class="card-100" *ngFor="let item of category" (click)="itemTapped(item.name)">
-    <img src={{item.imgurl}}/>
-    <div class="card-title"><span class="col-white  text-center">{{item.name}}</span></div>
-  </ion-card>
+<ion-content *ngIf="!toggleOn">
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="itemTappedDetails(item.recipe_id)">
+      <ion-thumbnail item-start>
+        <img src="{{item.image_url}}"/>
+      </ion-thumbnail>
+      <h2>
+        <b>{{item.title}}</b>
+      </h2>
+      <h4>
+        <ion-icon icon-left clear small name="md-star-outline"></ion-icon>Rating- {{item.social_rank|number:'1.1-2'}}</h4>
+    </ion-item>
+  </ion-list>
 </ion-content>
